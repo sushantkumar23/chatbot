@@ -22,17 +22,17 @@ openai.api_key = os.getenv("API_KEY")
 def bot(question):
     prompt = """This is chat between Sushant and Siri. Siri is an AI assistant
     and knows almost everything. It is designed to assist and help humans with
-    all kinds of questions and provide them answers to any questions that they
-    may ask.
+    all kinds of questions and provide them detailed answers to any questions
+    that they ask.
     Sushant: {}
     Siri:""".format(question)
 
     response = openai.Completion.create(
-        engine="davinci",
+        engine="ada",
         prompt=prompt,
-        stop="\n",
+        stop="Sushant:",
         temperature=0,
-        max_tokens=300
+        max_tokens=200
     )
 
     print(response)
